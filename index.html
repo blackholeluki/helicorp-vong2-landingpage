@@ -499,25 +499,35 @@
         }
 
         async function fetchAIResponse(userText) {
-            const systemPrompt = "Bạn là trợ lý AI chuyên nghiệp của HELICORP, tư vấn về card đồ họa ROG Astral RTX 5090. Trả lời ngắn gọn, nhiệt tình, tối đa 40 từ. Khách hỏi: ";
+            // Nâng cấp System Prompt: Nhồi sẵn kiến thức nền vào cho AI
+            const systemPrompt = `Bạn là trợ lý AI chuyên nghiệp của HELICORP. Hãy tư vấn chính xác dựa trên thông số sau của card đồ họa ROG Astral RTX 5090 Edition 20:
+- VRAM: 32GB GDDR7X (512-bit).
+- Nhân CUDA: 24,576.
+- Xung nhịp: OC mode 3200 MHz, Default 3150 MHz.
+- Tản nhiệt: Buồng hơi khổng lồ (Vapor Chamber), 3 quạt Axial-tech (công nghệ 0dB).
+- Nguồn yêu cầu (PSU): 1200W (cáp 2x 16-pin 12VHPWR).
+- Công suất TGP: 600W.
+- Cổng kết nối: 2 x HDMI 2.1a, 3 x DisplayPort 2.1a.
+- Kích thước: 357.6 x 149.3 x 70.1 mm (3.5 Slot).
+Quy tắc: Trả lời ngắn gọn, thân thiện, đi thẳng vào trọng tâm, tối đa 50 từ. Câu hỏi của khách: `;
+
             try {
-                // BƯỚC 1: GỌI API ĐỂ TỰ ĐỘNG TÌM MODEL HỢP LỆ TRÊN TÀI KHOẢN CỦA BẠN
+                // BƯỚC 1: GỌI API ĐỂ TỰ ĐỘNG TÌM MODEL
                 const listModelsUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
                 const listResponse = await fetch(listModelsUrl);
                 
-                if (!listResponse.ok) throw new Error("Lỗi xác thực API Key. Hãy kiểm tra lại chuỗi Base64.");
+                if (!listResponse.ok) throw new Error("Lỗi xác thực API Key.");
                 
                 const listData = await listResponse.json();
                 
-                // Thuật toán: Tìm model ưu tiên 1.5-flash, nếu không có thì lấy bất kỳ model gemini nào hỗ trợ chat
                 let validModel = listData.models.find(m => m.name === "models/gemini-1.5-flash" && m.supportedGenerationMethods.includes("generateContent"));
                 if (!validModel) {
                     validModel = listData.models.find(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent") && m.name.includes("gemini"));
                 }
 
-                if (!validModel) throw new Error("Tài khoản của bạn không có model nào hỗ trợ tính năng chat.");
+                if (!validModel) throw new Error("Không có model hỗ trợ chat.");
 
-                // BƯỚC 2: GỌI API CHAT VỚI MODEL ĐÃ TÌM ĐƯỢC
+                // BƯỚC 2: GỌI API CHAT
                 const API_URL = `https://generativelanguage.googleapis.com/v1beta/${validModel.name}:generateContent?key=${GEMINI_API_KEY}`;
                 
                 const response = await fetch(API_URL, {
@@ -528,10 +538,10 @@
                 
                 const data = await response.json();
                 
-                if (!response.ok) throw new Error(data.error?.message || `Lỗi gọi API: ${response.status}`);
+                if (!response.ok) throw new Error(data.error?.message || `Lỗi API: ${response.status}`);
 
                 const aiText = data.candidates[0].content.parts[0].text;
-                chatMessages.lastChild.remove(); // Xóa icon loading
+                chatMessages.lastChild.remove();
                 appendMessage(aiText, false);
                 
             } catch (error) {
