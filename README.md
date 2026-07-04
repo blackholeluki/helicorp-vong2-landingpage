@@ -21,7 +21,6 @@ Bám sát yêu cầu từ đề bài, dự án đã hoàn thiện cấu trúc ti
    - Thiết kế mang âm hưởng Cyberpunk, tông màu đỏ/đen/bạc đặc trưng của ROG.
    - Hiển thị mượt mà trên cả Desktop, Tablet và Mobile.
 2. **Tối ưu Hiệu năng & SEO:** 
-   - Hình ảnh được nén định dạng WebP, tự lưu trữ (self-hosting).
    - Tích hợp đầy đủ các thẻ Meta cơ bản (Title, Description, Open Graph).
 3. **Phát triển chế độ Dark Mode:** 
    - Chuyển đổi giao diện Sáng/Tối mượt mà thông qua JavaScript và Tailwind CSS.
