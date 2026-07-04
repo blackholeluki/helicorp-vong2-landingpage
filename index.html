@@ -376,10 +376,10 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Khởi tạo Animation mượt mà
+  
         AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // Logic Giao diện Sáng/Tối
+
         const html = document.documentElement;
         const themeToggle = document.getElementById('themeToggle');
         const iconSun = document.getElementById('iconSun');
@@ -400,7 +400,7 @@
             }
         });
 
-        // Ẩn/Hiện Navbar khi cuộn
+
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -413,7 +413,7 @@
             lastScrollTop = scrollTop;
         });
 
-        // Xử lý Scrollytelling (Trượt kể chuyện)
+    
         const stickyWrapper = document.querySelector('.sticky-wrapper');
         const step1 = document.getElementById('step-1');
         const step2 = document.getElementById('step-2');
@@ -442,12 +442,11 @@
                     gpuGraphic.style.transform = 'scale(1) translateY(15px)';
                 }
             } else if (rect.top > 0) {
-                // Khôi phục trạng thái khi cuộn ngược lên
+    
                 fanGraphic.classList.add('spin-fast');
             }
         });
 
-        // Xử lý Gửi Form Đăng ký
         const form = document.getElementById('preorderForm');
         const btn = document.getElementById('submitBtn');
         const msg = document.getElementById('formMessage');
@@ -483,92 +482,97 @@
         
      
         const GEMINI_API_KEY = atob(ENCODED_API_KEY).trim(); 
+
+    // BỘ NÃO DỰ PHÒNG: Trả lời tức thì, không tốn quota API
+    const KNOWLEDGE_BASE = {
+        "thông số": "ROG Astral RTX 5090: VRAM 32GB GDDR7X, 24,576 CUDA Cores, xung nhịp 3200MHz, TGP 600W. Đây là quái vật đồ họa mạnh nhất hiện nay!",
+        "vram": "Siêu phẩm này trang bị tới 32GB bộ nhớ GDDR7X thế hệ mới nhất, băng thông cực rộng cho trải nghiệm Gaming 8K.",
+        "nguồn": "Bạn cần bộ nguồn (PSU) công suất thực 1200W trở lên với chuẩn cáp 12VHPWR để đảm bảo hệ thống vận hành ổn định.",
+        "tản nhiệt": "Sản phẩm dùng hệ thống tản nhiệt buồng hơi (Vapor Chamber) kết hợp 3 quạt Axial-tech. Công nghệ 0dB giúp quạt dừng hoàn toàn khi nhiệt độ dưới 50°C.",
+        "giá": "Hiện sản phẩm đang trong giai đoạn Pre-order tại HELICORP. Vui lòng điền thông tin trong Form đăng ký để nhận báo giá ưu đãi nhất!",
+        "địa chỉ": "HELICORP có các chi nhánh tại Hà Nội và TP.HCM. Bạn có thể đặt hàng trực tuyến để được giao hàng tận nơi trên toàn quốc."
+    };
+
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function appendMessage(text, isUser) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = isUser 
+            ? "bg-rog-red p-3 rounded-2xl rounded-tr-sm self-end max-w-[85%] text-white shadow-sm" 
+            : "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] text-gray-900 dark:text-gray-200 shadow-sm";
+        msgDiv.textContent = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; 
+    }
+
+    async function fetchAIResponse(userText) {
+        const lowText = userText.toLowerCase();
         
-        const chatInput = document.getElementById('chatInput');
-        const chatSend = document.getElementById('chatSend');
-        const chatMessages = document.getElementById('chatMessages');
-
-        function appendMessage(text, isUser) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = isUser 
-                ? "bg-rog-red p-3 rounded-2xl rounded-tr-sm self-end max-w-[85%] text-white shadow-sm" 
-                : "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] text-gray-900 dark:text-gray-200 shadow-sm";
-            msgDiv.textContent = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight; 
-        }
-
-        async function fetchAIResponse(userText) {
-            // Nâng cấp System Prompt: Nhồi sẵn kiến thức nền vào cho AI
-            const systemPrompt = `Bạn là trợ lý AI chuyên nghiệp của HELICORP. Hãy tư vấn chính xác dựa trên thông số sau của card đồ họa ROG Astral RTX 5090 Edition 20:
-- VRAM: 32GB GDDR7X (512-bit).
-- Nhân CUDA: 24,576.
-- Xung nhịp: OC mode 3200 MHz, Default 3150 MHz.
-- Tản nhiệt: Buồng hơi khổng lồ (Vapor Chamber), 3 quạt Axial-tech (công nghệ 0dB).
-- Nguồn yêu cầu (PSU): 1200W (cáp 2x 16-pin 12VHPWR).
-- Công suất TGP: 600W.
-- Cổng kết nối: 2 x HDMI 2.1a, 3 x DisplayPort 2.1a.
-- Kích thước: 357.6 x 149.3 x 70.1 mm (3.5 Slot).
-Quy tắc: Trả lời ngắn gọn, thân thiện, đi thẳng vào trọng tâm, tối đa 50 từ. Câu hỏi của khách: `;
-
-            try {
-                // BƯỚC 1: GỌI API ĐỂ TỰ ĐỘNG TÌM MODEL
-                const listModelsUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
-                const listResponse = await fetch(listModelsUrl);
-                
-                if (!listResponse.ok) throw new Error("Lỗi xác thực API Key.");
-                
-                const listData = await listResponse.json();
-                
-                let validModel = listData.models.find(m => m.name === "models/gemini-1.5-flash" && m.supportedGenerationMethods.includes("generateContent"));
-                if (!validModel) {
-                    validModel = listData.models.find(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent") && m.name.includes("gemini"));
-                }
-
-                if (!validModel) throw new Error("Không có model hỗ trợ chat.");
-
-                // BƯỚC 2: GỌI API CHAT
-                const API_URL = `https://generativelanguage.googleapis.com/v1beta/${validModel.name}:generateContent?key=${GEMINI_API_KEY}`;
-                
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt + userText }] }] })
-                });
-                
-                const data = await response.json();
-                
-                if (!response.ok) throw new Error(data.error?.message || `Lỗi API: ${response.status}`);
-
-                const aiText = data.candidates[0].content.parts[0].text;
-                chatMessages.lastChild.remove();
-                appendMessage(aiText, false);
-                
-            } catch (error) {
-                chatMessages.lastChild.remove();
-                appendMessage(`⚠️ Lỗi hệ thống: ${error.message}`, false);
-                console.error("Chi tiết lỗi:", error);
+        // 1. KIỂM TRA KIẾN THỨC NỘI BỘ (KHÔNG TỐN API)
+        for (let key in KNOWLEDGE_BASE) {
+            if (lowText.includes(key)) {
+                setTimeout(() => {
+                    chatMessages.lastChild.remove();
+                    appendMessage(KNOWLEDGE_BASE[key], false);
+                }, 600);
+                return;
             }
         }
 
-        chatSend.addEventListener('click', () => {
-            const text = chatInput.value.trim();
-            if (!text) return;
-            appendMessage(text, true); 
-            chatInput.value = '';
+       
+        const systemPrompt = "Bạn là trợ lý AI của HELICORP tư vấn về RTX 5090. Trả lời ngắn gọn, chuyên nghiệp, dưới 40 từ. Câu hỏi: ";
+        try {
+            const listModelsUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
+            const listResponse = await fetch(listModelsUrl);
+            const listData = await listResponse.json();
             
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start text-gray-900 dark:text-gray-200 flex gap-1";
-            loadingDiv.innerHTML = '<div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>';
-            chatMessages.appendChild(loadingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            
-            fetchAIResponse(text);
-        });
+       
+            let validModel = listData.models.find(m => m.name.includes("gemini-1.5-flash")) || {name: "models/gemini-pro"};
 
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') chatSend.click();
-        });
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/${validModel.name}:generateContent?key=${GEMINI_API_KEY}`;
+            
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt + userText }] }] })
+            });
+            
+            if (response.status === 429 || !response.ok) throw new Error("Busy");
+
+            const data = await response.json();
+            const aiText = data.candidates[0].content.parts[0].text;
+            
+            chatMessages.lastChild.remove();
+            appendMessage(aiText, false);
+            
+        } catch (error) {
+      
+            chatMessages.lastChild.remove();
+            appendMessage("Hệ thống tư vấn đang bận. Vui lòng để lại thông tin ở Form Pre-order để chuyên viên HELICORP liên hệ hỗ trợ bạn nhé!", false);
+        }
+    }
+
+    chatSend.addEventListener('click', () => {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        appendMessage(text, true); 
+        chatInput.value = '';
+        
+
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start text-gray-900 dark:text-gray-200 flex gap-1";
+        loadingDiv.innerHTML = '<div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>';
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        fetchAIResponse(text);
+    });
+
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') chatSend.click();
+    });
     </script>
 </body>
 </html>
