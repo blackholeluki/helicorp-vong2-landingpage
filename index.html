@@ -478,15 +478,11 @@
             chatBox.style.display = 'none';
         });
 
-        // Kết nối API Gemini (Chatbot thực tế)
-       // --- 7. TÍCH HỢP GEMINI AI (ĐÃ BẢO MẬT BẰNG BASE64) ---
-        
-        // Dán chuỗi Base64 bạn vừa copy ở Bước 2 vào biến này:
+  
         const ENCODED_API_KEY = 'QVEuQWI4Uk42TDQ1OWJ0R2JocldtRjY5WmFtbnNHT1hHZ2lEQk9GYzQ3X1NLRVBfQl9nMWc='; 
         
-        // Trình duyệt sẽ tự động giải mã khi chạy
-        const GEMINI_API_KEY = atob(ENCODED_API_KEY); 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+     
+        const GEMINI_API_KEY = atob(ENCODED_API_KEY).trim(); 
         
         const chatInput = document.getElementById('chatInput');
         const chatSend = document.getElementById('chatSend');
@@ -505,6 +501,25 @@
         async function fetchAIResponse(userText) {
             const systemPrompt = "Bạn là trợ lý AI chuyên nghiệp của HELICORP, tư vấn về card đồ họa ROG Astral RTX 5090. Trả lời ngắn gọn, nhiệt tình, tối đa 40 từ. Khách hỏi: ";
             try {
+                // BƯỚC 1: GỌI API ĐỂ TỰ ĐỘNG TÌM MODEL HỢP LỆ TRÊN TÀI KHOẢN CỦA BẠN
+                const listModelsUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
+                const listResponse = await fetch(listModelsUrl);
+                
+                if (!listResponse.ok) throw new Error("Lỗi xác thực API Key. Hãy kiểm tra lại chuỗi Base64.");
+                
+                const listData = await listResponse.json();
+                
+                // Thuật toán: Tìm model ưu tiên 1.5-flash, nếu không có thì lấy bất kỳ model gemini nào hỗ trợ chat
+                let validModel = listData.models.find(m => m.name === "models/gemini-1.5-flash" && m.supportedGenerationMethods.includes("generateContent"));
+                if (!validModel) {
+                    validModel = listData.models.find(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent") && m.name.includes("gemini"));
+                }
+
+                if (!validModel) throw new Error("Tài khoản của bạn không có model nào hỗ trợ tính năng chat.");
+
+                // BƯỚC 2: GỌI API CHAT VỚI MODEL ĐÃ TÌM ĐƯỢC
+                const API_URL = `https://generativelanguage.googleapis.com/v1beta/${validModel.name}:generateContent?key=${GEMINI_API_KEY}`;
+                
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -513,17 +528,13 @@
                 
                 const data = await response.json();
                 
-                // Nếu API trả về lỗi (ví dụ: 400, 403, 404), in lỗi thật ra màn hình để bắt bệnh
-                if (!response.ok) {
-                    throw new Error(data.error?.message || `Lỗi kết nối API: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(data.error?.message || `Lỗi gọi API: ${response.status}`);
 
                 const aiText = data.candidates[0].content.parts[0].text;
                 chatMessages.lastChild.remove(); // Xóa icon loading
                 appendMessage(aiText, false);
                 
             } catch (error) {
-                // In chính xác mã lỗi ra cửa sổ chat để chúng ta biết tại sao nó hỏng
                 chatMessages.lastChild.remove();
                 appendMessage(`⚠️ Lỗi hệ thống: ${error.message}`, false);
                 console.error("Chi tiết lỗi:", error);
@@ -536,7 +547,6 @@
             appendMessage(text, true); 
             chatInput.value = '';
             
-            // Hiển thị trạng thái đang nhập "..."
             const loadingDiv = document.createElement('div');
             loadingDiv.className = "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start text-gray-900 dark:text-gray-200 flex gap-1";
             loadingDiv.innerHTML = '<div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>';
