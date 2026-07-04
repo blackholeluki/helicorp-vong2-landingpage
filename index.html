@@ -513,22 +513,24 @@
         // 1. KIỂM TRA KIẾN THỨC NỘI BỘ (KHÔNG TỐN API)
         for (let key in KNOWLEDGE_BASE) {
             if (lowText.includes(key)) {
+                // Xóa icon loading trước khi trả lời
+                const loaders = document.querySelectorAll('.loading-dots');
+                loaders.forEach(l => l.remove());
+                
                 setTimeout(() => {
-                    chatMessages.lastChild.remove();
                     appendMessage(KNOWLEDGE_BASE[key], false);
                 }, 600);
                 return;
             }
         }
 
-       
+        // 2. GỌI GEMINI AI NẾU KHÔNG CÓ TRONG KNOWLEDGE_BASE
         const systemPrompt = "Bạn là trợ lý AI của HELICORP tư vấn về RTX 5090. Trả lời ngắn gọn, chuyên nghiệp, dưới 40 từ. Câu hỏi: ";
         try {
             const listModelsUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
             const listResponse = await fetch(listModelsUrl);
             const listData = await listResponse.json();
             
-       
             let validModel = listData.models.find(m => m.name.includes("gemini-1.5-flash")) || {name: "models/gemini-pro"};
 
             const API_URL = `https://generativelanguage.googleapis.com/v1beta/${validModel.name}:generateContent?key=${GEMINI_API_KEY}`;
@@ -544,12 +546,13 @@
             const data = await response.json();
             const aiText = data.candidates[0].content.parts[0].text;
             
-            chatMessages.lastChild.remove();
+            const loaders = document.querySelectorAll('.loading-dots');
+            loaders.forEach(l => l.remove());
             appendMessage(aiText, false);
             
         } catch (error) {
-      
-            chatMessages.lastChild.remove();
+            const loaders = document.querySelectorAll('.loading-dots');
+            loaders.forEach(l => l.remove());
             appendMessage("Hệ thống tư vấn đang bận. Vui lòng để lại thông tin ở Form Pre-order để chuyên viên HELICORP liên hệ hỗ trợ bạn nhé!", false);
         }
     }
@@ -560,18 +563,21 @@
         appendMessage(text, true); 
         chatInput.value = '';
         
-
+        // Thêm class 'loading-dots' để dễ dàng xóa đi sau đó
         const loadingDiv = document.createElement('div');
-        loadingDiv.className = "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start text-gray-900 dark:text-gray-200 flex gap-1";
+        loadingDiv.className = "loading-dots bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start text-gray-900 dark:text-gray-200 flex gap-1";
         loadingDiv.innerHTML = '<div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>';
         chatMessages.appendChild(loadingDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         
         fetchAIResponse(text);
+   // Sửa lỗi nhấn Enter không gửi được
+    chatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Ngăn chặn việc xuống dòng trong khung chat
+            chatSend.click();    // Gọi sự kiện click của nút gửi
+        }
     });
-
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') chatSend.click();
     });
     </script>
 </body>
