@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROG Astral RTX 5090 Edition 20 | Outshine The Competition</title>
+    <meta name="description" content="Trải nghiệm sức mạnh đồ họa đỉnh cao với ROG Astral GeForce RTX 5090. Kiến trúc Blackwell X, VRAM 32GB GDDR7X, và hệ thống tản nhiệt buồng hơi siêu việt.">
+    
+    <meta property="og:title" content="ROG Astral RTX 5090 Edition 20">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://dlcdnwebimgs.asus.com/files/media/202605/a063f258-4f10-4756-88d5-9192aa955456/v1/img/ksp/backplate.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        chakra: ['Chakra Petch', 'sans-serif'],
+                    },
+                    colors: {
+                        rog: { red: '#ff003c', dark: '#050505', gray: '#121212', silver: '#c0c0c0' },
+                        aura: { purple: '#b026ff', blue: '#00d4ff' }
+                    },
+                    backgroundImage: {
+                        'hex-pattern': "url('data:image/svg+xml,%3Csvg width=\"20\" height=\"34\" viewBox=\"0 0 20 34\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M10 0l10 5.774v11.548L10 23.096 0 17.322V5.774z\" fill=\"%23ff003c\" fill-opacity=\"0.03\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Chakra Petch', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-tech { font-family: 'Orbitron', sans-serif; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #ff003c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff3366; }
+
+        @keyframes pulse-aura {
+            0% { box-shadow: 0 0 20px rgba(176, 38, 255, 0.2), 0 0 40px rgba(0, 212, 255, 0.2); }
+            50% { box-shadow: 0 0 50px rgba(176, 38, 255, 0.6), 0 0 80px rgba(0, 212, 255, 0.6); }
+            100% { box-shadow: 0 0 20px rgba(176, 38, 255, 0.2), 0 0 40px rgba(0, 212, 255, 0.2); }
+        }
+        .aura-glow { animation: pulse-aura 3s infinite alternate; }
+
+        @keyframes fan-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .spin-fast { animation: fan-spin 0.8s linear infinite; }
+
+        .sticky-wrapper { height: 400vh; position: relative; }
+        .sticky-content { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        
+        .reveal-mask { mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%); }
+        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%); }
+        .clip-btn { clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); }
+        
+        .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); }
+        .dark .glass-panel { background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: none; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-rog-dark dark:text-white bg-hex-pattern antialiased selection:bg-rog-red selection:text-white transition-colors duration-500">
+
+    <header class="fixed w-full top-0 z-50 glass-panel border-b-0 transition-transform duration-300 shadow-xl" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <i class="ri-triangle-fill text-rog-red text-3xl animate-pulse"></i>
+                <span class="font-tech text-2xl font-black tracking-[0.2em] uppercase text-black dark:text-white">HELICORP</span>
+            </div>
+            <nav class="hidden md:flex gap-8 font-bold text-sm tracking-widest uppercase text-gray-700 dark:text-gray-300">
+                <a href="#features" class="hover:text-rog-red transition-colors">Kiến trúc</a>
+                <a href="#performance" class="hover:text-rog-red transition-colors">Hiệu năng</a>
+                <a href="#cooling" class="hover:text-rog-red transition-colors">Tản nhiệt</a>
+                <a href="#specs" class="hover:text-rog-red transition-colors">Thông số</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-yellow-400 flex items-center justify-center hover:scale-110 transition shadow-lg">
+                    <i class="ri-sun-fill hidden text-xl" id="iconSun"></i>
+                    <i class="ri-moon-fill text-xl" id="iconMoon"></i>
+                </button>
+                <a href="#preorder" class="clip-btn bg-rog-red text-white px-8 py-3 font-tech font-bold hover:bg-red-700 hover:shadow-[0_0_20px_rgba(255,0,60,0.5)] transition-all duration-300 tracking-wider">
+                    MUA NGAY
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-screen flex items-center justify-center pt-20 overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <video autoplay loop muted playsinline class="object-cover w-full h-full opacity-40 dark:opacity-60 scale-105">
+                <source src="https://dlcdnwebimgs.asus.com/files/media/202605/a063f258-4f10-4756-88d5-9192aa955456/v1/video/product.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-100 dark:to-rog-dark"></div>
+        </div>
+        
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
+            <div data-aos="zoom-out" data-aos-duration="1200">
+                <div class="inline-block px-4 py-1 mb-6 border border-rog-red text-rog-red font-tech tracking-[0.3em] font-bold rounded backdrop-blur-sm bg-black/30">
+                    EDITION 20 - THE FUTURE IS HERE
+                </div>
+                <h2 class="text-6xl md:text-8xl font-black font-tech mb-4 leading-none text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
+                    ROG ASTRAL <br> RTX <span class="text-transparent bg-clip-text bg-gradient-to-r from-rog-red to-orange-500">5090</span>
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto mb-10 drop-shadow-md">
+                    Cỗ máy đồ họa tối thượng tái định nghĩa ranh giới của thực tế ảo và AI. Sức mạnh vượt ngoài mọi định luật vật lý.
+                </p>
+            </div>
+            
+            <div class="relative w-full max-w-5xl" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                <div class="absolute inset-0 rounded-full aura-glow opacity-70 blur-[120px] z-0"></div>
+                <img src="https://dlcdnwebimgs.asus.com/files/media/202605/a063f258-4f10-4756-88d5-9192aa955456/v1/img/ksp/backplate.png" alt="ROG Astral RTX 5090" class="relative z-10 w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-105 hover:-translate-y-4 transition-all duration-700 ease-out">
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-20">
+            <span class="text-sm tracking-widest text-white mb-2 font-tech font-bold drop-shadow-lg">KHÁM PHÁ NGAY</span>
+            <i class="ri-arrow-down-double-line text-3xl text-rog-red drop-shadow-lg"></i>
+        </div>
+    </section>
+
+    <section id="performance" class="py-20 bg-white dark:bg-black relative border-y border-gray-200 dark:border-gray-900 transition-colors z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-300 dark:divide-gray-800">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl font-black font-tech text-rog-red mb-2">8K</div>
+                    <div class="text-gray-600 dark:text-gray-400 font-bold tracking-widest uppercase">Độ phân giải Gaming</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl font-black font-tech text-rog-red mb-2">4X</div>
+                    <div class="text-gray-600 dark:text-gray-400 font-bold tracking-widest uppercase">Hiệu năng AI (DLSS 4)</div>
+                </div>
+                <div class="hidden md:block" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl font-black font-tech text-rog-red mb-2">32<span class="text-2xl text-gray-500">GB</span></div>
+                    <div class="text-gray-600 dark:text-gray-400 font-bold tracking-widest uppercase">VRAM GDDR7X</div>
+                </div>
+                <div class="hidden md:block" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl font-black font-tech text-rog-red mb-2">600<span class="text-2xl text-gray-500">W</span></div>
+                    <div class="text-gray-600 dark:text-gray-400 font-bold tracking-widest uppercase">Công suất TGP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-32 bg-gray-50 dark:bg-rog-gray relative transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h3 class="text-4xl md:text-5xl font-tech font-black mb-6 uppercase">Kiến trúc <span class="text-rog-red">Blackwell X</span></h3>
+                <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
+                    Sự trỗi dậy của thế hệ silicon mới. Cung cấp sức mạnh tính toán tuyệt đối cho các mô hình AI ngôn ngữ lớn (LLM), render 3D chuyên nghiệp và trải nghiệm gaming không thỏa hiệp.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-10 hover:border-rog-red transition-all duration-500 group clip-diagonal hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,60,0.15)]" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-rog-red/10 flex items-center justify-center rounded-full mb-8 group-hover:bg-rog-red group-hover:text-white transition-all duration-300">
+                        <i class="ri-cpu-line text-4xl text-rog-red group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-tech font-bold mb-4">NVIDIA Tensor Gen 5</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Được trang bị 24,576 nhân CUDA. Hỗ trợ định dạng dữ liệu FP8 mang lại thông lượng xử lý AI khủng khiếp, tối ưu hóa triệt để cho NVIDIA DLSS 4 Frame Generation.</p>
+                </div>
+                
+                <div class="glass-panel p-10 hover:border-rog-red transition-all duration-500 group clip-diagonal hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,60,0.15)]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-rog-red/10 flex items-center justify-center rounded-full mb-8 group-hover:bg-rog-red group-hover:text-white transition-all duration-300">
+                        <i class="ri-magic-line text-4xl text-rog-red group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-tech font-bold mb-4">Ray Tracing Gen 4</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Mô phỏng đường đi của ánh sáng trong thời gian thực chính xác tới từng pixel. Công nghệ Opacity Micromap loại bỏ hoàn toàn nhiễu hạt trong các cảnh cháy nổ, sương mù.</p>
+                </div>
+                
+                <div class="glass-panel p-10 hover:border-rog-red transition-all duration-500 group clip-diagonal hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,60,0.15)]" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-rog-red/10 flex items-center justify-center rounded-full mb-8 group-hover:bg-rog-red group-hover:text-white transition-all duration-300">
+                        <i class="ri-tools-line text-4xl text-rog-red group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-tech font-bold mb-4">Auto-Extreme Tech</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Quy trình sản xuất tự động 100% độc quyền của Asus, hoàn thành mọi mối hàn chỉ trong một lần đi qua, giảm tải nhiệt lên linh kiện và loại bỏ hóa chất tẩy rửa mạnh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cooling" class="sticky-wrapper bg-white dark:bg-black transition-colors duration-300">
+        <div class="sticky-content">
+            <div class="max-w-7xl w-full px-4 flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="w-full md:w-1/3 z-20">
+                    <div class="mb-32 opacity-100 transition-opacity duration-300" id="step-1">
+                        <div class="font-tech text-rog-red font-bold tracking-widest mb-2 uppercase">Giai đoạn 1</div>
+                        <h3 class="text-4xl md:text-5xl font-tech font-black text-blue-600 dark:text-blue-500 mb-4">AXIAL-TECH UPGRADE</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">Thiết kế 3 quạt siêu lớn với vòng bi kép. Quạt trung tâm quay ngược chiều để triệt tiêu hiện tượng nhiễu loạn luồng khí, đẩy không khí lạnh trực tiếp xuyên qua cụm tản nhiệt.</p>
+                    </div>
+                    <div class="mb-32 opacity-20 transition-opacity duration-300" id="step-2">
+                        <div class="font-tech text-rog-red font-bold tracking-widest mb-2 uppercase">Giai đoạn 2</div>
+                        <h3 class="text-4xl md:text-5xl font-tech font-black text-cyan-500 dark:text-cyan-400 mb-4">VAPOR CHAMBER</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">Buồng hơi (Vapor Chamber) được gia công CNC tinh xảo, ôm trọn bề mặt Die GPU và chip nhớ GDDR7X, phân tán nhiệt lượng tỏa ra diện rộng chỉ trong tích tắc.</p>
+                    </div>
+                    <div class="opacity-20 transition-opacity duration-300" id="step-3">
+                        <div class="font-tech text-rog-red font-bold tracking-widest mb-2 uppercase">Giai đoạn 3</div>
+                        <h3 class="text-4xl md:text-5xl font-tech font-black text-gray-900 dark:text-white mb-4">0dB TECHNOLOGY</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">Bộ điều khiển thông minh tự động dừng toàn bộ quạt khi nhiệt độ linh kiện duy trì dưới ngưỡng 50°C. Thưởng thức không gian tĩnh lặng tuyệt đối khi làm việc nhẹ hoặc lướt web.</p>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-2/3 relative h-[600px] flex items-center justify-center">
+                    <div class="absolute text-[350px] text-blue-500/10 dark:text-blue-500/20 spin-fast transition-all duration-500 z-0" id="fan-graphic">
+                        <i class="ri-pinwheel-fill"></i>
+                    </div>
+                    <img src="https://dlcdnwebimgs.asus.com/files/media/202605/a063f258-4f10-4756-88d5-9192aa955456/v1/img/dual/pd.png" alt="Cooling System" class="relative z-10 w-full max-w-2xl drop-shadow-[0_30px_50px_rgba(0,150,255,0.4)] transition-transform duration-700" id="gpu-graphic">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="software" class="py-32 bg-white dark:bg-black relative overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-aura-purple opacity-20 dark:opacity-30 blur-[150px] rounded-full mix-blend-multiply dark:mix-blend-screen"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-aura-blue opacity-20 dark:opacity-30 blur-[150px] rounded-full mix-blend-multiply dark:mix-blend-screen"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2" data-aos="fade-right">
+                <img src="https://images.nvidia.com/aem-dam/en-zz/nvidiaweb/geforce/news/computex-2026-partner-product-showcase/asus-rog-astral-geforce-rtx-5090-edition-20-001.png" alt="GPU Tweak III" class="w-full reveal-mask scale-110">
+            </div>
+            <div class="md:w-1/2" data-aos="fade-left">
+                <div class="inline-block px-3 py-1 bg-gray-200 dark:bg-white/10 border border-gray-300 dark:border-white/20 rounded font-tech tracking-widest text-sm mb-6">SOFTWARE</div>
+                <h3 class="text-5xl font-tech font-bold mb-6">GPU TWEAK III & <span class="text-transparent bg-clip-text bg-gradient-to-r from-aura-purple to-aura-blue">AURA SYNC</span></h3>
+                <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
+                    Phần mềm ASUS GPU Tweak III đưa việc tinh chỉnh hệ thống lên đẳng cấp mới. Giám sát thông số như xung nhịp GPU, tần số bộ nhớ thời gian thực.
+                    <br><br>
+                    Đồng bộ hóa dải đèn RGB với hệ sinh thái Aura Sync, tạo ra góc máy mang đậm dấu ấn cá nhân.
+                </p>
+                <div class="flex gap-4">
+                    <button class="clip-btn bg-gray-900 text-white dark:bg-white dark:text-black px-8 py-3 font-tech font-bold hover:bg-gray-700 dark:hover:bg-gray-200 transition">TẢI XUỐNG NGAY</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="specs" class="py-24 bg-gray-50 dark:bg-rog-gray border-y border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="zoom-in">
+                <h2 class="text-4xl md:text-5xl font-tech font-black mb-4 uppercase">Thông số kỹ thuật <span class="text-rog-red">Chi tiết</span></h2>
+                <div class="w-24 h-1 bg-rog-red mx-auto"></div>
+            </div>
+            
+            <div class="glass-panel rounded-xl overflow-hidden shadow-2xl" data-aos="fade-up">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-800">
+                        <div class="bg-gray-200 dark:bg-black/50 p-4 font-tech font-bold text-lg uppercase text-rog-red border-b border-gray-300 dark:border-gray-800"><i class="ri-cpu-line mr-2"></i> Vi Xử Lý & Bộ Nhớ</div>
+                        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Graphic Engine</span>
+                            <span class="font-tech text-right">NVIDIA® GeForce RTX™ 5090</span>
+                        </div>
+                        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">CUDA Cores</span>
+                            <span class="text-right">24,576</span>
+                        </div>
+                        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Engine Clock</span>
+                            <span class="text-right">OC mode: 3200 MHz<br>Default mode: 3150 MHz</span>
+                        </div>
+                        <div class="p-5 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Video Memory</span>
+                            <span class="font-bold text-rog-red text-right">32GB GDDR7X (512-bit)</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="bg-gray-200 dark:bg-black/50 p-4 font-tech font-bold text-lg uppercase text-rog-red border-b border-gray-300 dark:border-gray-800"><i class="ri-plug-line mr-2"></i> Kết Nối & Vật Lý</div>
+                        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Cổng xuất hình (Ports)</span>
+                            <span class="text-right">2 x HDMI 2.1a<br>3 x DisplayPort 2.1a</span>
+                        </div>
+                        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Nguồn yêu cầu (PSU)</span>
+                            <span class="text-right">1200W (Kèm cáp 2x 16-pin 12VHPWR)</span>
+                        </div>
+                        <div class="p-5 border-b border-gray-200 dark:border-gray-800 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Kích thước (L x W x H)</span>
+                            <span class="text-right">357.6 x 149.3 x 70.1 mm<br><span class="text-sm text-gray-500">(Chiếm 3.5 Slot PCIe)</span></span>
+                        </div>
+                        <div class="p-5 flex justify-between hover:bg-gray-100 dark:hover:bg-gray-800/50 transition">
+                            <span class="font-bold text-gray-600 dark:text-gray-400">Hỗ trợ NVLink/Crossfire</span>
+                            <span class="text-right">Không hỗ trợ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="preorder" class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-50 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-gray-100/90 to-gray-200/90 dark:from-black/90 dark:via-rog-dark/90 dark:to-rog-gray/90 transition-colors duration-300 z-0"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl md:text-6xl font-tech font-black mb-4">GIA NHẬP <span class="text-transparent bg-clip-text bg-gradient-to-r from-rog-red to-orange-500">CỘNG ĐỒNG ROG</span></h2>
+                <p class="text-gray-700 dark:text-gray-400 text-lg max-w-2xl mx-auto">Đăng ký thông tin để nhận đặc quyền Pre-order: Giao hàng sớm nhất toàn cầu, tặng kèm giá đỡ VGA RGB và gia hạn bảo hành lên 5 năm.</p>
+            </div>
+            
+            <form id="preorderForm" class="glass-panel p-8 md:p-12 rounded-2xl shadow-[0_0_50px_rgba(255,0,60,0.1)] border-t border-l border-white/40 dark:border-rog-red/30 relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-rog-red to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 -z-10"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="relative">
+                        <label class="block text-xs font-bold text-gray-800 dark:text-gray-400 mb-2 font-tech tracking-widest uppercase">Họ và Tên</label>
+                        <i class="ri-user-line absolute bottom-3.5 left-4 text-gray-600 dark:text-gray-400"></i>
+                        <input type="text" required class="w-full bg-white dark:bg-black/50 border border-gray-400 dark:border-gray-700 text-gray-900 dark:text-white pl-12 pr-4 py-3 focus:outline-none focus:border-rog-red focus:ring-1 focus:ring-rog-red transition rounded-lg">
+                    </div>
+                    <div class="relative">
+                        <label class="block text-xs font-bold text-gray-800 dark:text-gray-400 mb-2 font-tech tracking-widest uppercase">Số điện thoại</label>
+                        <i class="ri-phone-line absolute bottom-3.5 left-4 text-gray-600 dark:text-gray-400"></i>
+                        <input type="tel" required class="w-full bg-white dark:bg-black/50 border border-gray-400 dark:border-gray-700 text-gray-900 dark:text-white pl-12 pr-4 py-3 focus:outline-none focus:border-rog-red focus:ring-1 focus:ring-rog-red transition rounded-lg">
+                    </div>
+                </div>
+                <div class="relative mb-10">
+                    <label class="block text-xs font-bold text-gray-800 dark:text-gray-400 mb-2 font-tech tracking-widest uppercase">Email liên hệ</label>
+                    <i class="ri-mail-line absolute bottom-3.5 left-4 text-gray-600 dark:text-gray-400"></i>
+                    <input type="email" required class="w-full bg-white dark:bg-black/50 border border-gray-400 dark:border-gray-700 text-gray-900 dark:text-white pl-12 pr-4 py-3 focus:outline-none focus:border-rog-red focus:ring-1 focus:ring-rog-red transition rounded-lg">
+                </div>
+                <button type="submit" id="submitBtn" class="w-full clip-diagonal bg-rog-red text-white font-tech font-black text-xl py-5 hover:bg-red-700 hover:shadow-[0_0_30px_rgba(255,0,60,0.5)] transition duration-300 relative overflow-hidden group/btn">
+                    <span class="relative z-10 tracking-widest">XÁC NHẬN ĐĂNG KÝ</span>
+                    <div class="absolute top-0 -left-[100%] w-1/2 h-full bg-white/30 skew-x-12 group-hover/btn:animate-[sweep_0.6s_ease-in-out_forwards]"></div>
+                </button>
+                
+                <div id="formMessage" class="hidden mt-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg text-center font-bold text-green-700 dark:text-green-400 flex items-center justify-center gap-2">
+                    <i class="ri-checkbox-circle-fill text-xl"></i> Yêu cầu của bạn đã được lưu vào hệ thống!
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chatToggle" class="w-16 h-16 bg-rog-red rounded-full flex items-center justify-center text-3xl text-white shadow-[0_0_20px_rgba(255,0,60,0.5)] hover:scale-110 hover:rotate-12 transition-all">
+            <i class="ri-robot-2-line"></i>
+        </button>
+        <div id="chatBox" class="hidden absolute bottom-20 right-0 w-80 md:w-96 h-[450px] glass-panel rounded-2xl shadow-2xl flex-col overflow-hidden transition-all transform origin-bottom-right">
+            <div class="bg-gray-200 dark:bg-black/80 p-4 border-b border-gray-300 dark:border-gray-800 font-tech font-bold flex justify-between text-gray-900 dark:text-white items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span>HELI AI ASSISTANT</span>
+                </div>
+                <i class="ri-close-line cursor-pointer text-2xl hover:text-rog-red transition-colors" id="chatClose"></i>
+            </div>
+            
+            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto bg-gray-50/90 dark:bg-gray-900/80 flex flex-col gap-4 text-sm">
+                <div class="bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] text-gray-900 dark:text-gray-200 shadow-sm">
+                    Xin chào! Tôi là chuyên viên AI của HELICORP. Bạn đang phân vân về cấu hình nguồn PSU hay cần tư vấn cách thức đặt hàng RTX 5090?
+                </div>
+            </div>
+            
+            <div class="p-3 bg-white/90 dark:bg-black/90 flex gap-2 border-t border-gray-300 dark:border-gray-800">
+                <input type="text" id="chatInput" placeholder="Nhập câu hỏi..." class="flex-1 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 px-4 py-2.5 rounded-full focus:outline-none focus:border-rog-red text-sm text-gray-900 dark:text-white">
+                <button id="chatSend" class="bg-rog-red w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-700 text-white transition-colors shrink-0"><i class="ri-send-plane-fill"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white dark:bg-black py-16 border-t border-gray-200 dark:border-gray-900 text-center transition-colors duration-300 relative z-10">
+        <div class="font-tech text-4xl font-black tracking-[0.2em] mb-4 text-gray-900 dark:text-white"><span class="text-rog-red">HELI</span>CORP</div>
+        <p class="text-gray-500 dark:text-gray-400 text-sm font-tech mb-8 uppercase tracking-widest">Dự án phát triển Website</p>
+        <div class="flex justify-center gap-6 text-2xl text-gray-400">
+            <a href="#" class="hover:text-rog-red transition-colors"><i class="ri-github-fill"></i></a>
+            <a href="#" class="hover:text-rog-red transition-colors"><i class="ri-discord-fill"></i></a>
+            <a href="#" class="hover:text-rog-red transition-colors"><i class="ri-global-line"></i></a>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes sweep { to { left: 200%; } }
+    </style>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo Animation mượt mà
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // Logic Giao diện Sáng/Tối
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const iconSun = document.getElementById('iconSun');
+        const iconMoon = document.getElementById('iconMoon');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                iconSun.classList.add('hidden');
+                iconMoon.classList.remove('hidden');
+                themeToggle.classList.replace('bg-gray-200', 'bg-gray-800');
+                themeToggle.classList.replace('text-gray-800', 'text-yellow-400');
+            } else {
+                iconMoon.classList.add('hidden');
+                iconSun.classList.remove('hidden');
+                themeToggle.classList.replace('bg-gray-800', 'bg-gray-200');
+                themeToggle.classList.replace('text-yellow-400', 'text-gray-800');
+            }
+        });
+
+        // Ẩn/Hiện Navbar khi cuộn
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Xử lý Scrollytelling (Trượt kể chuyện)
+        const stickyWrapper = document.querySelector('.sticky-wrapper');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+        const fanGraphic = document.getElementById('fan-graphic');
+        const gpuGraphic = document.getElementById('gpu-graphic');
+
+        window.addEventListener('scroll', () => {
+            if(!stickyWrapper) return;
+            const rect = stickyWrapper.getBoundingClientRect();
+            const scrollPercent = Math.abs(rect.top) / (rect.height - window.innerHeight);
+
+            if(rect.top <= 0 && scrollPercent <= 1) {
+                if(scrollPercent < 0.3) {
+                    step1.style.opacity = '1'; step2.style.opacity = '0.2'; step3.style.opacity = '0.2';
+                    fanGraphic.style.color = 'rgba(37, 99, 235, 0.2)'; 
+                    gpuGraphic.style.transform = 'scale(1)';
+                } else if (scrollPercent >= 0.3 && scrollPercent < 0.6) {
+                    step1.style.opacity = '0.2'; step2.style.opacity = '1'; step3.style.opacity = '0.2';
+                    fanGraphic.style.color = 'rgba(6, 182, 212, 0.2)'; 
+                    gpuGraphic.style.transform = 'scale(1.05)';
+                } else {
+                    step1.style.opacity = '0.2'; step2.style.opacity = '0.2'; step3.style.opacity = '1';
+                    fanGraphic.style.color = html.classList.contains('dark') ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)';
+                    fanGraphic.classList.remove('spin-fast'); 
+                    gpuGraphic.style.transform = 'scale(1) translateY(15px)';
+                }
+            } else if (rect.top > 0) {
+                // Khôi phục trạng thái khi cuộn ngược lên
+                fanGraphic.classList.add('spin-fast');
+            }
+        });
+
+        // Xử lý Gửi Form Đăng ký
+        const form = document.getElementById('preorderForm');
+        const btn = document.getElementById('submitBtn');
+        const msg = document.getElementById('formMessage');
+        const btnText = btn.querySelector('span');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            btnText.innerHTML = '<i class="ri-loader-4-line animate-spin text-2xl"></i> ĐANG XỬ LÝ...';
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            setTimeout(() => {
+                btn.style.display = 'none';
+                msg.classList.remove('hidden');
+                form.reset();
+            }, 2000);
+        });
+
+        // Logic Mở/Đóng Chatbot
+        const chatToggle = document.getElementById('chatToggle');
+        const chatBox = document.getElementById('chatBox');
+        const chatClose = document.getElementById('chatClose');
+
+        chatToggle.addEventListener('click', () => { 
+            chatBox.classList.toggle('hidden'); 
+            chatBox.style.display = chatBox.classList.contains('hidden') ? 'none' : 'flex'; 
+        });
+        chatClose.addEventListener('click', () => { 
+            chatBox.classList.add('hidden'); 
+            chatBox.style.display = 'none';
+        });
+
+        // Kết nối API Gemini (Chatbot thực tế)
+        const GEMINI_API_KEY = 'AQ.Ab8RN6JrYuql1F4xm7JjxjEeZsvQTm-3eypauF5RvHeXDCcpNQ'; 
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function appendMessage(text, isUser) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = isUser 
+                ? "bg-rog-red p-3 rounded-2xl rounded-tr-sm self-end max-w-[85%] text-white shadow-sm" 
+                : "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] text-gray-900 dark:text-gray-200 shadow-sm";
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; 
+        }
+
+        async function fetchAIResponse(userText) {
+            const systemPrompt = "Bạn là trợ lý AI chuyên nghiệp của HELICORP, tư vấn về card đồ họa ROG Astral RTX 5090. Trả lời ngắn gọn, nhiệt tình, chuyên nghiệp, tối đa 50 từ. Khách hỏi: ";
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt + userText }] }] })
+                });
+                const data = await response.json();
+                const aiText = data.candidates[0].content.parts[0].text;
+                chatMessages.lastChild.remove(); 
+                appendMessage(aiText, false);
+            } catch (error) {
+                chatMessages.lastChild.remove();
+                appendMessage("Hệ thống AI đang bảo trì nội bộ. Vui lòng thử lại sau giây lát.", false);
+            }
+        }
+
+        chatSend.addEventListener('click', () => {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            appendMessage(text, true); 
+            chatInput.value = '';
+            
+            // Hiện loading "..."
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = "bg-gray-200 dark:bg-gray-800 p-3 rounded-2xl rounded-tl-sm self-start text-gray-900 dark:text-gray-200 flex gap-1";
+            loadingDiv.innerHTML = '<div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>';
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            if(GEMINI_API_KEY === 'DÁN_API_KEY_CỦA_BẠN_VÀO_ĐÂY') {
+                setTimeout(() => {
+                    chatMessages.lastChild.remove();
+                    appendMessage("Tính năng Chatbot đang bị lỗi.", false);
+                }, 1500);
+            } else {
+                fetchAIResponse(text);
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') chatSend.click();
+        });
+    </script>
+</body>
+</html>
