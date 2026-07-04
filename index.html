@@ -486,7 +486,7 @@
         
         // Trình duyệt sẽ tự động giải mã khi chạy
         const GEMINI_API_KEY = atob(ENCODED_API_KEY); 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
         
         const chatInput = document.getElementById('chatInput');
         const chatSend = document.getElementById('chatSend');
