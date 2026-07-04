@@ -1,4 +1,4 @@
-# HELICORP - THỰC TẬP SINH IT PHÁT TRIỂN WEBSITE (VÒNG 2)
+# HELICORP - DỰ ÁN PHÁT TRIỂN WEBSITE (VÒNG 2)
 
 Dự án Landing Page giới thiệu siêu phẩm card đồ họa **ROG Astral RTX 5090 Edition 20**, được xây dựng trong khuôn khổ bài kiểm tra năng lực Vòng 2 của HELICORP.
 
